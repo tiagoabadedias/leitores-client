@@ -1,0 +1,21 @@
+.numero-pagina{
+    background-color: gray;
+    width: 10px;
+    margin-top: 5px;
+    margin-left: 2px;
+}
+.material-icons{
+    font-size: 1.25em;
+}
+.active-label {
+    color: #48a4ff;
+}
+.mat-button-toggle-disabled.mat-button-toggle-checked{
+    background-color: #fff;
+}
+.mat-button-toggle-checked{
+    background-color: #fff;
+}
+.link-pagina{
+    margin: 10px 15px;
+}

@@ -1,0 +1,85 @@
+<div class="wrapper">
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <div class="row">
+        <div *ngIf="!livros">
+          <br>
+          <mz-progress [backgroundClass]="'blue lighten-4'" [progressClass]="'blue'"></mz-progress>
+        </div>
+        <div class="col-xs-12">
+          <br>
+          <mat-card>
+            <div class="row start-xs">
+              <button mat-stroked-button routerLink="cadastro" class="green white-text">+ Livro</button>
+            </div>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+            <mat-table #table [dataSource]="livros">
+              <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let livro"> {{livro?.nome}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="totalAvaliacoes">
+                <mat-header-cell *matHeaderCellDef class="center"> Total avaliações </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.totalAvaliacoes ? livro?.totalAvaliacoes : '-' }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="mediaNota">
+                <mat-header-cell *matHeaderCellDef class="center"> Média avaliações </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.mediaNota ? livro?.mediaNota : '-' }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="percentualOtimo">
+                <mat-header-cell *matHeaderCellDef class="center"> % Ótimo </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualOtimo ? ((livro?.percentualOtimo * 100) / livro?.totalAvaliacoes).toFixed(0) : '-' }}
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="percentualBom">
+                <mat-header-cell *matHeaderCellDef class="center"> % Bom </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualBom ? ((livro?.percentualBom * 100) / livro?.totalAvaliacoes).toFixed(0) : '-' }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="percentualRuim">
+                <mat-header-cell *matHeaderCellDef class="center"> % Ruim </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualRuim ? ((livro?.percentualRuim * 100) / livro?.totalAvaliacoes).toFixed(0) : '-' }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="percentualRegular">
+                <mat-header-cell *matHeaderCellDef class="center"> % Regular </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualRegular ? ((livro?.percentualRegular * 100) / livro?.totalAvaliacoes).toFixed(0) : '-'
+                  }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef class="center"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let livro" class="center">
+                  <i class="material-icons clicavel" (click)="editar(livro.LivroIdReferencia)">
+                    editar
+                  </i>
+                  <i (click)="livroDelete = livro; bottomSheetModal.open();" class="material-icons clicavel">delete_outline</i>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mz-modal #bottomSheetModal [fixedFooter]="false" [bottomSheet]="false">
+  <mz-modal-header>
+    <h4>Deseja remover este item?</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    {{ livroDelete?.nome }}
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Não</button>
+    <button mz-button [flat]="true" mz-modal-close (click)="delete()">Sim</button>
+  </mz-modal-footer>
+</mz-modal>

@@ -1,0 +1,23 @@
+
+.div-text{
+    margin-top: 60px;
+}
+.text-titulo{
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+.text-sub-titulo{
+  font-size: 25px;
+  font-weight: bold;
+}
+.wrapper{
+  margin-top: 8em; 
+}
+.main-header{
+  font-size: 1.75rem;
+}
+span {
+  font-family: 'Indie Flower', Cursive;
+  font-size: 3rem;
+}

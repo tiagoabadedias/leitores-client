@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body{
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/round.png");
+  width: 100%;
+}
+nav .nav-wrapper{
+  z-index: 1000;
+}
+
+
+span.badge{
+  margin-top: 5px;
+}
+.clicavel{
+  cursor: pointer;
+}
+
+.no-select{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.mat-tab-labels>.mat-tab-label {
+  min-width:152px;
+}
+
+
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea, .select-wrapper input.select-dropdown {
+  font-size: 14px !important;
+}
+
+.side-nav {
+  margin-top: 65px;
+  color: #000;
+}
+
+.side-nav li {
+  line-height: inherit !important;
+}
+
+label{
+  font-size: .9rem !important;
+}
+
+.mat-header-cell:last-child {
+  text-align: right;
+}
+
+.mat-cell .material-icons{
+  float: right;
+  width: 30px;
+}
+
+.modal-overlay{
+  z-index: 999 !important;
+}
+.modal.modal-fixed-footer{
+  z-index: 1000 !important;
+}
+.wrapper{
+  width: 100%;
+  min-width: 100vw;
+}

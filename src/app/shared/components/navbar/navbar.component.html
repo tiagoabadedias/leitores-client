@@ -1,0 +1,25 @@
+<div class="navbar-fixed z-index" *ngIf="isLoggedIn | async">
+  <nav class="" style="background-color: #607D8B">
+    <div class="row">
+      <div class="col s1">
+        <a id="btn-dropdown-settings" class="waves-effect  btn-flat btn-floating valign-wrapper on-style">
+          <i class="material-icons icone-alinhado">dehaze</i>
+        </a>
+      </div>
+      <div class="col s6">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="col s5">
+        <div class="nav-wrapper">
+          <a routerLink="/dashboard" class="brand-logo center"></a>
+          <div id="nav-mobile" class="right ">
+            <div class="usuario">
+              {{ usuarioLogado?.usuario?.usuario }}
+            </div>
+            <app-navbar-menu></app-navbar-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,99 @@
+<br>
+<div *ngIf="!avaliacoes">
+  <br>
+  <mz-progress [backgroundClass]="'blue lighten-4'" [progressClass]="'blue'"></mz-progress>
+</div>
+<div class="wrapper">
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <div class="row">
+        <div class="col-xs-12">
+          <mat-card>
+            <mat-card-content>
+              <div class="row">
+                <div class="col s10">
+                  <input matInput [(ngModel)]="search" placeholder="Pesquisar por Observação, Estado de conservacao ou Livro">
+                </div>
+                <div class="col s2">
+                  <button mat-stroked-button (click)="getAvaliacoes()">Pesquisar</button>
+                </div>
+              </div>
+              <mat-table #table [dataSource]="avaliacoes">
+                <ng-container matColumnDef="observacao">
+                  <mat-header-cell *matHeaderCellDef (click)="alteraOrder('observacao');">
+                    <div class="row bottom-xs">
+                      <div class="col-xs-12">
+                        <span>Observação</span>
+                        <i *ngIf="property == 'observacao'" class="material-icons">{{ (order == 'desc')? 'arrow_downward': 'arrow_upward' }}
+                        </i>
+                      </div>
+                    </div>
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let avaliacao"> {{avaliacao?.observacao}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="nota">
+                  <mat-header-cell *matHeaderCellDef (click)="alteraOrder('nota');">
+                    <div class="row bottom-xs">
+                      <div class="col-xs-12">
+                        <span>Nota</span>
+                        <i *ngIf="property == 'nota'" class="material-icons">{{ (order == 'desc')? 'arrow_downward': 'arrow_upward' }}
+                        </i>
+                      </div>
+                    </div>
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let avaliacao"> {{avaliacao?.nota}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="estadoConservacao">
+                  <mat-header-cell *matHeaderCellDef (click)="alteraOrder('estadoConservacao');">
+                    <div class="row bottom-xs">
+                      <div class="col-xs-12">
+                        <span>Estado de conservação</span>
+                        <i *ngIf="property == 'estadoConservacao'" class="material-icons">{{ (order == 'desc')? 'arrow_downward': 'arrow_upward' }}</i>
+                      </div>
+                    </div>
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let avaliacao"> {{avaliacao?.estadoConservacao}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="livro">
+                  <mat-header-cell *matHeaderCellDef (click)="alteraOrder('livro');">
+                    <div class="row bottom-xs">
+                      <div class="col-xs-12">
+                        <span>Livro</span>
+                        <i *ngIf="property == 'livro'" class="material-icons">{{ (order == 'desc')? 'arrow_downward': 'arrow_upward' }}
+                        </i>
+                      </div>
+                    </div>
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let avaliacao"> {{avaliacao?.livro?.nome}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+              <div class="row middle-xs end-xs">
+                <div class="col-xs-5">
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                    <mat-button-toggle [disabled]="true">
+                      <i class="material-icons clicavel" (click)="anterior()">chevron_left</i>
+                    </mat-button-toggle>
+                    <a class="link-pagina" [style.color]="page == pag ? 'blue' : 'grey'" *ngFor="let pag of pages" (click)="page=pag; getAvaliacoes()">{{pag}}</a>
+                    <mat-button-toggle [disabled]="true">
+                      <i class="material-icons clicavel" (click)="proximo()">chevron_right</i>
+                    </mat-button-toggle>
+                  </mat-button-toggle-group>
+                </div>
+                <div class="col-xs-2">
+                  <select mz-select id="options-select" [(ngModel)]="limit" (change)="getAvaliacoes()">
+                    <option [value]="5" selected>5</option>
+                    <option [value]="10">10</option>
+                    <option [value]="20">20</option>
+                    <option [value]="50">50</option>
+                  </select>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

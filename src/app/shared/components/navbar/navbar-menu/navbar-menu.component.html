@@ -1,0 +1,34 @@
+<mz-sidenav [id]="'settings'" [edge]="'left'" [collapseButtonId]="'btn-dropdown-settings'" [closeOnClick]="true">
+
+  <mz-sidenav-link>
+    <a (click)="redirecionar('/livros')" class="waves-effect">
+      Livros
+      <i mz-icon [align]="'right'" [icon]="'book'" [size]="'15px'">
+      </i>
+    </a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a (click)="redirecionar('/usuarios')" class="waves-effect">
+      Usuários
+      <i mz-icon [align]="'right'" [icon]="'fingerprint'" [size]="'15px'">
+      </i>
+    </a>
+  </mz-sidenav-link>
+
+  <mz-sidenav-link>
+    <a (click)="redirecionar('/avaliacoes')" class="waves-effect">
+      Avaliações
+      <i mz-icon [align]="'right'" [icon]="'insert_chart_outlined'" [size]="'15px'">
+      </i>
+    </a>
+  </mz-sidenav-link>
+
+  <mz-sidenav-link>
+    <a (click)="redirecionar('/admin')" class="waves-effect">
+      Sair
+      <i mz-icon [align]="'right'" [icon]="'power_settings_new'" [size]="'15px'">
+      </i>
+    </a>
+  </mz-sidenav-link>
+
+</mz-sidenav>

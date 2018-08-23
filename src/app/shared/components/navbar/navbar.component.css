@@ -1,0 +1,22 @@
+.z-index{
+    z-index: 10000;
+}
+.icone-alinhado{
+    margin-top: -8px;
+}
+
+.logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.logo > img {
+    vertical-align: middle;
+    margin-right: 10px;
+    height: 40px; 
+    border-radius: 50%;
+}
+
+.usuario{
+    margin-left: -10rem;
+}

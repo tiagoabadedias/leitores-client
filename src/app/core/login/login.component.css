@@ -1,0 +1,27 @@
+.margins{
+    margin-top: 5%;
+}
+.margin-header{
+    margin-bottom: 8%;
+}
+.card-margin{
+    margin-top: -1%;
+}
+.margin-top-login{
+    margin-top: 10%;
+}
+.margin-form{
+    margin-top: 5%;
+}
+.margin-btn-entrar{
+    margin-left: 15%;
+}
+.form-login {
+    text-align: center;
+}
+.login-img {
+    width: 40%;
+}
+.backg{
+    background-color:lavender;
+  }

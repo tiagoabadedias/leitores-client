@@ -1,0 +1,7 @@
+<a routerLink="/dashboard" class="breadcrumb">
+  <i mz-icon [align]="'center'" [icon]="'home'" [size]="'medium'">
+  </i>
+</a>
+<a *ngFor="let breadcrumb of _breadcrumbsService.breadcrumbs" routerLink="{{breadcrumb.link}}" class="breadcrumb">
+  {{breadcrumb.title}}
+</a>

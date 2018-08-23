@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="center-xs middle-xs row">
+    <div class="col-xs-12">
+      <span class="text-sub-titulo">Terminou de ler seu Livro? </span>
+    </div>
+    <div class="col-xs-12">
+      <span class="text-titulo">Entre e registre sua opinião!</span>
+    </div>
+    <div class="col-xs-12">
+      <div class="row center-xs">
+        <div class="col-xs-6">
+          <input matInput placeholder="Insira seu usuário aqui" [(ngModel)]="usuario.nome" (keyup.enter)="pesquisaUsuario(); limpaUsuario()"
+            required>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <button mat-stroked-button (click)="pesquisaUsuario()">Entrar</button>
+    </div>
+  </div>
+</div>

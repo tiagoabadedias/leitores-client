@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <div class="row center-xs">
+    <div class="col-xs-10">
+      <div class="row">
+        <div *ngIf="!usuarios">
+          <br>
+          <mz-progress [backgroundClass]="'blue lighten-4'" [progressClass]="'blue'"></mz-progress>
+        </div>
+        <div class="col-xs-12">
+          <br>
+          <mat-card>
+            <div class="row start-xs">
+              <button mat-stroked-button routerLink="cadastro" class="green white-text">+ Usuário</button>
+            </div>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+            <mat-table #table [dataSource]="usuarios">
+              <ng-container matColumnDef="usuario">
+                <mat-header-cell *matHeaderCellDef class="center"> Usuário </mat-header-cell>
+                <mat-cell *matCellDef="let usuario"> {{usuario?.usuario}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="livros">
+                <mat-header-cell *matHeaderCellDef class="center livros"> Livros </mat-header-cell>
+                <mat-cell *matCellDef="let usuario" class="center-xs middle-xs livros row">
+                  <div *ngFor="let avaliacao of usuario.avaliacao">
+                    <span *ngIf="avaliacao != usuario.avaliacao[0]">, </span>
+                    {{avaliacao.livro.nome}}
+                  </div>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="mediaNota">
+                <mat-header-cell *matHeaderCellDef class="center"> Média de notas </mat-header-cell>
+                <mat-cell *matCellDef="let usuario" class="center"> {{ usuario?.mediaNota }} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef class="center"> Ações </mat-header-cell>
+                <mat-cell *matCellDef="let usuario" class="center">
+                  <i class="material-icons clicavel" (click)="editar(usuario.id)">edit</i>
+                  <i (click)="usuarioDelete = usuario; bottomSheetModal.open();" class="material-icons clicavel">delete_outline</i>
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mz-modal #bottomSheetModal [fixedFooter]="false" [bottomSheet]="false">
+  <mz-modal-header>
+    <h4>Deseja remover este item?</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    {{ usuarioDelete?.usuario }}
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Não</button>
+    <button mz-button [flat]="true" mz-modal-close (click)="delete()">Sim</button>
+  </mz-modal-footer>
+</mz-modal>

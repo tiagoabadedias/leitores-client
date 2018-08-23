@@ -1,0 +1,20 @@
+.wrapper{
+  margin-top: 10em; 
+}
+.text-titulo{
+  font-size: 4rem;
+}
+.text-sub-titulo{
+  font-size: 2.5rem;
+}
+span, input, button {
+  font-family: 'Indie Flower', Cursive;
+}
+input {
+  font-size: 2rem !important;
+  margin-top: 1em;
+}
+button{
+  font-size: 1.5rem;
+  background-color: transparent;
+}

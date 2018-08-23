@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <div class="row center-xs">
+    <div class="col-xs-6">
+      <span>Sua avaliação</span>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-xs">
+          <mz-select-container>
+            <select mz-select id="options-select" [(ngModel)]="avaliacao.LivroId" [label]="'Livro'" [placeholder]="'Selecione um Livro'">
+              <option *ngFor="let livro of livros" [value]="livro.LivroIdReferencia">{{livro.nome}}</option>
+            </select>
+          </mz-select-container>
+        </div>
+        <div class="col-xs">
+          <mz-select-container>
+            <select mz-select id="options-select" [(ngModel)]="avaliacao.estadoConservacao" [label]="'Estado de Conservação'" [placeholder]="'Selecione o Estado'">
+              <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
+            </select>
+          </mz-select-container>
+        </div>
+        <div class="col-xs">
+          <mz-select-container>
+            <select mz-select id="options-select" [(ngModel)]="avaliacao.nota" [label]="'Nota'" [placeholder]="'Selecione uma nota'">
+              <option *ngFor="let nota of notas" [value]="nota">{{nota}}</option>
+            </select>
+          </mz-select-container>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-xs-12">
+          <textarea rows="4" matInput [(ngModel)]="avaliacao.observacao" [value]="avaliacao.observacao" maxlength="256" placeholder="Observação"
+            required></textarea>
+        </mat-form-field>
+      </div>
+      <button mat-stroked-button (click)="iniciarNovaAvaliacao()">Inicio</button>
+      <button mat-stroked-button (click)="enviar(bottomSheetModal)">Enviar avaliação</button>
+    </div>
+  </div>
+</div>
+
+<mz-modal #bottomSheetModal [fixedFooter]="true" [bottomSheet]="false">
+  <mz-modal-header>
+    <h4>Obrigado pela sua avaliação!</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    Deseja cadastrar uma nova avaliação sobre outro livro?
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close (click)="iniciarNovaAvaliacao()">Não</button>
+    <button mz-button [flat]="true" (click)="limparAvaliacao()" mz-modal-close>Sim</button>
+  </mz-modal-footer>
+</mz-modal>
