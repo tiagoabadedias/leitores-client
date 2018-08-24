@@ -61,16 +61,20 @@ export class AvaliacaoAddComponent implements OnInit {
 
   enviar(modal) {
 
-    this._avaliacaoService
-      .save(this.avaliacao)
-      .subscribe((resposta) => {
-        if (resposta.id) {
-          this.notificacao('Avaliação registrada', 'green');
-          modal.open();
-        } else {
-          this.notificacao(resposta, 'red');
-        }
-    });
+    if (this.avaliacao.LivroId && this.avaliacao.estadoConservacao && this.avaliacao.nota && this.avaliacao.observacao) {
+      this._avaliacaoService
+        .save(this.avaliacao)
+        .subscribe((resposta) => {
+          if (resposta.id) {
+            this.notificacao('Avaliação registrada', 'green');
+            modal.open();
+          } else {
+            this.notificacao(resposta, 'red');
+          }
+      });
+    } else {
+      this.notificacao('Todos os campos devem ser preenchidos', 'blue');
+    }
   }
 
   limparAvaliacao() {

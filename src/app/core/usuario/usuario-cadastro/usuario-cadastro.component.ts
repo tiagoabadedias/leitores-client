@@ -79,10 +79,14 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   save(event: any) {
-    if (this.formStatus == FormStatus.CREATE) {
-      this.create();
-    } else if (this.formStatus == FormStatus.UPDATE) {
-      this.update();
+    if (this.usuario.usuario) {
+      if (this.formStatus == FormStatus.CREATE) {
+        this.create();
+      } else if (this.formStatus == FormStatus.UPDATE) {
+        this.update();
+      }
+    } else {
+      this.notificacao('Todos os campos devem ser preenchidos', 'blue');
     }
   }
 

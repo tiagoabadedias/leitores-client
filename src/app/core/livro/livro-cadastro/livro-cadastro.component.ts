@@ -78,10 +78,14 @@ export class LivroCadastroComponent implements OnInit {
   }
 
   save(event: any) {
-    if (this.formStatus == FormStatus.CREATE) {
-      this.create();
-    } else if (this.formStatus == FormStatus.UPDATE) {
-      this.update();
+    if (this.livro.nome && this.livro.resumo && this.livro.autor && this.livro.ano) {
+      if (this.formStatus == FormStatus.CREATE) {
+        this.create();
+      } else if (this.formStatus == FormStatus.UPDATE) {
+        this.update();
+      }
+    } else {
+      this.notificacao('Todos os campos devem ser preenchidos', 'blue');
     }
   }
 
