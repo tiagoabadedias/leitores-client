@@ -21,34 +21,33 @@
 
               <ng-container matColumnDef="totalAvaliacoes">
                 <mat-header-cell *matHeaderCellDef class="center"> Total avaliações </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.totalAvaliacoes ? livro?.totalAvaliacoes : '-' }} </mat-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ formataNumero(livro.totalAvaliacoes) }} </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="mediaNota">
                 <mat-header-cell *matHeaderCellDef class="center"> Média avaliações </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.mediaNota ? formataNumero(livro.mediaNota) : '-' }} </mat-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ formataNumero(livro.mediaNota) }} </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="percentualOtimo">
                 <mat-header-cell *matHeaderCellDef class="center"> % Ótimo </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualOtimo ? ((livro?.percentualOtimo * 100) / livro?.totalAvaliacoes).toFixed(0) : '-' }}
+                <mat-cell *matCellDef="let livro" class="center"> {{ formataNumero(livro.percentualOtimo) }}
                 </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="percentualBom">
                 <mat-header-cell *matHeaderCellDef class="center"> % Bom </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualBom ? ((livro?.percentualBom * 100) / livro?.totalAvaliacoes).toFixed(0) : '-' }} </mat-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ formataNumero(livro.percentualBom) }} </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="percentualRuim">
                 <mat-header-cell *matHeaderCellDef class="center"> % Ruim </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualRuim ? ((livro?.percentualRuim * 100) / livro?.totalAvaliacoes).toFixed(0) : '-' }} </mat-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ formataNumero(livro.percentualRuim) }} </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="percentualRegular">
                 <mat-header-cell *matHeaderCellDef class="center"> % Regular </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.percentualRegular ? ((livro?.percentualRegular * 100) / livro?.totalAvaliacoes).toFixed(0) : '-'
-                  }} </mat-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ formataNumero(livro.percentualRegular) }} </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="acoes">

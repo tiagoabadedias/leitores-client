@@ -71,8 +71,8 @@ export class LivroListaComponent implements OnInit {
     }
   }
 
-  formataNumero(mediaNota) {
-    return Number(mediaNota).toFixed(2);
+  formataNumero(numero) {
+    return numero && (numero !== '0.0000') ? Number(numero).toFixed(2) : '-';
   }
 
   notificacao(mensagem: string, cor: any) {
