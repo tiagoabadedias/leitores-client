@@ -82,7 +82,7 @@
                   </mat-button-toggle-group>
                 </div>
                 <div class="col-xs-2">
-                  <select mz-select id="options-select" [(ngModel)]="limit" (change)="getAvaliacoes()">
+                  <select mz-select id="options-select" [(ngModel)]="limit" (change)="page = 1; getAvaliacoes()">
                     <option [value]="5" selected>5</option>
                     <option [value]="10">10</option>
                     <option [value]="20">20</option>
