@@ -67,6 +67,10 @@ export class UsuarioListaComponent implements OnInit {
       });
   }
 
+  formataNumero(mediaNota) {
+    return Number(mediaNota).toFixed(2);
+  }
+
   notificacao(mensagem: string, cor: any) {
     this._toastService.show(mensagem, 3000, cor);
   }

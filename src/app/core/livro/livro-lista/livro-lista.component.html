@@ -26,7 +26,7 @@
 
               <ng-container matColumnDef="mediaNota">
                 <mat-header-cell *matHeaderCellDef class="center"> Média avaliações </mat-header-cell>
-                <mat-cell *matCellDef="let livro" class="center"> {{ livro.mediaNota ? livro?.mediaNota : '-' }} </mat-cell>
+                <mat-cell *matCellDef="let livro" class="center"> {{ livro.mediaNota ? formataNumero(livro.mediaNota) : '-' }} </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="percentualOtimo">
